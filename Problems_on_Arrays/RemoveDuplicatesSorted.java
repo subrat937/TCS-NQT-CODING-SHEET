@@ -11,7 +11,7 @@ public class RemoveDuplicatesSorted {
         for (int i=0;i<n;i++){
             arr[i]=sc.nextInt();
         }
-        int k = 0;
+        int k = 0; //prev
         for (int j = 1; j < arr.length; j++) {
             if (arr[k] != arr[j]) {
                 k++;
