@@ -14,21 +14,21 @@ public class ReplaceElementsByRank {
             arr[i] = sc.nextInt();
         }
         //duplicate array:
-        int[] duplicate = Arrays.copyOf(arr, arr.length);
-
-        Arrays.sort(duplicate);
-        HashMap<Integer,Integer> map=new HashMap<>();
-        for (int i=0;i<n;i++){
-            map.put(duplicate[i],i+1);
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] nums = arr.clone();
+        Arrays.sort(nums);
+        int k = 1;
+        for(int i = 0; i < nums.length; i++) {
+            if(!map.containsKey(nums[i])) {
+                map.put(nums[i], k++);
+            }
         }
-        //now making the ranking array
-        int[] res=new int[n];
-        for (int i=0;i<n;i++){
-            int temp=map.get(arr[i]);
-            res[i]=temp;
+        for(int i = 0; i < arr.length; i++) {
+            nums[i] = map.get(arr[i]);
         }
+       
         for (int i = 0; i < n; i++) {
-            System.out.print(res[i]+" ");
+            System.out.print(nums[i]+" ");
         }
         sc.close();
     }
